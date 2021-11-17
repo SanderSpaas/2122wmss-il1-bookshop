@@ -7,7 +7,6 @@
 // wordt er getoond voor elke klinker hoeveel keer die is voorgekomen, in aflopende volgorde.
 // $ php p_taal.php "Dit is een voorbeeld"
 // Dipit ipis eepeen voopoorbeepeeld
-// Dipit ipis epeepen vopooporbepeepeld
 // e 4
 // i 2
 // o 2
@@ -16,19 +15,24 @@
 // echo("dit is de meegeven input");
 // echo($argv[1]);
 $input = str_split($argv[1]);
-$klinkers = array('a','e','i','o','u');
-$counters = array('a' => 0, 'e'=> 0, 'i'=> 0, 'o'=> 0, 'u'=> 0);
-
-foreach($input as $letter){
-    if(in_array(strtolower($letter),$klinkers)){
-        echo($letter);
-        echo("p");
-        echo($letter);
+$klinkers = array('a', 'e', 'i', 'o', 'u');
+$counters = array('a' => 0, 'e' => 0, 'i' => 0, 'o' => 0, 'u' => 0);
+$output = '';
+$lettercache = '';
+foreach ($input as $letter) {
+    if (in_array(strtolower($letter), $klinkers)) {
         $counters[$letter]++;
-    }else{
-      echo($letter);  
+        if($letter == $lettercache){
+            $output = substr($output,0,strlen($output)-3)  . $letter . $letter . 'p' . $letter . $letter;
+        }else{  
+            $output = $output . $letter . 'p' . $letter;
+        }
+    } else {
+        $output = $output . $letter;
     }
+    $lettercache = $letter; 
 }
+echo $output;
 echo "\n";
 //array gaan sorteren en dan gaan weergeven
 arsort($counters);
