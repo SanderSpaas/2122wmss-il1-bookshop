@@ -20,6 +20,8 @@ cd my-project
 git init
 git pull https://gitlab.com/ikdoeict/joris.maervoet/wmss-boilerplate.git
 git remote add origin https://gitlab.com/ikdoeict/<your-name>/my-project.git
+git remote add origin https://gitlab.com/ikdoeict/sanderspaas/2122wmss-il1-SanderSpaas.git
+git remote set-url origin git:https://gitlab.com/ikdoeict/sanderspaas/2122wmss-il1-SanderSpaas.git
 git push -u origin master
 ```
 3. From now on, you can stage, commit and push as usual.

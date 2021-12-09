@@ -4,8 +4,16 @@ require_once ('../vendor/autoload.php');
 require_once ('../config/database.php');
 require_once ('../src/Services/DatabaseConnector.php');
 
-// Fetch database connection
+// @TODO Fetch database connection
+$connection = \Services\DatabaseConnector::getConnection();
 
-// Bootstrap Twig
+// @TODO Bootstrap Twig 
+$loader = new \Twig\Loader\FileSystemLoader(__DIR__ . '/../resources/templates');
+$twig = new Twig\Environment($loader, [
+    'cache' => __DIR__ . '/../storage/cache',
+    'auto_reload' => true
+]);
 
-// and run ...!
+// render template
+$template = $twig->load('index.twig');
+echo $template->render();
